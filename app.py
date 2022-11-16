@@ -50,6 +50,8 @@ def ssn():
     <body>
     <main>
     <h1>Short Story Night formatter!</h1>
+    <p>De-gremlin, estimate read time, and provide the <code>st</code> commands! Just paste and click go~</p>
+    <p>Ping Maddy if you run into problems.</p>
     <form method="post">
     <textarea name="story" rows="20" cols="80">{}</textarea><br>
     <input type="submit">
