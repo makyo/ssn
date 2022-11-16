@@ -10,6 +10,7 @@ app = Flask(__name__)
 def ssn():
     duration = True
     read_story = ''
+    story = ''
     if request.method == 'POST':
         story = request.form['story']
         # Fix gremlins
@@ -22,7 +23,8 @@ def ssn():
         duration = '%d minutes, %d seconds' % (int(minutes), int((minutes - int(minutes)) * 100 * (3/5)))
         # Prefix lines
         for line in degremlin.split('\n'):
-            read_story += 'st ' + line
+            if len(line.strip()):
+                read_story += 'st ' + line
     return '''
     <!DOCTYPE html>
     <html>
@@ -58,7 +60,7 @@ def ssn():
     </html>
     '''.format(story, '''
         <pre class="result">
-st >>> This story will take {} to read
+st >>> This story will take about {} to read
 {}
         </pre>
         '''.format(duration, read_story) if read_story else '', '')
